@@ -1,6 +1,9 @@
 buildscript {
     ext.kotlin_version = '1.7.10'
     repositories {
+        //修改Gradle镜像地址为阿里云镜像
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         google()
         mavenCentral()
     }
@@ -13,6 +16,9 @@ buildscript {
 
 allprojects {
     repositories {
+        //修改Gradle镜像地址为阿里云镜像
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         google()
         mavenCentral()
     }

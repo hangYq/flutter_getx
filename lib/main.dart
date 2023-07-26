@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_getx/plugins/plugin.dart';
 import 'package:flutter_getx/routes/routes.dart';
 import 'package:get/get.dart';
 
@@ -46,8 +47,39 @@ Future<void> main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    final PluginTest plugin = PluginTest();
+    plugin.registerCallback('timer', receiverNative);
+    logger.d('sub initState');
+  }
+
+  void receiverNative(dynamic result) {}
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    logger.d('didChangeAppLifecycleState');
+    if (state == AppLifecycleState.resumed) {
+      logger.d('resumed：');
+    } else if (state == AppLifecycleState.inactive) {
+      logger.d('inactive');
+    } else if (state == AppLifecycleState.paused) {
+      logger.d('paused');
+    } else if (state == AppLifecycleState.detached) {
+      logger.d('detached');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

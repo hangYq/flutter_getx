@@ -12,26 +12,28 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: GetBuilder<HomeController>(
         builder: (HomeController controller) {
-          return Column(
-            children: [
-              const Text('home'),
-              ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(AppRoutes.search);
-                },
-                child: const Text('跳转到  search 页面'),
-              ),
-              Text(
-                "${controller.counter}",
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  controller.inc();
-                },
-                child: const Text("计数器加1"),
-              ),
-            ],
+          return Center(
+            child: Column(
+              children: [
+                const Text('home 页面'),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.demo);
+                  },
+                  child: const Text('跳转到 Demo 页面'),
+                ),
+                Text(
+                  "${controller.counter}",
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    controller.inc();
+                  },
+                  child: const Text("计数器加1"),
+                ),
+              ],
+            ),
           );
         },
       ),
