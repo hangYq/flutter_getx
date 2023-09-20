@@ -1,4 +1,4 @@
-import 'package:interfast/pages/demo/plugin_demo.dart';
+import 'package:flutter_getx/pages/demo/plugin_demo.dart';
 
 import '../../routes/routes.dart';
 import './controller.dart';
